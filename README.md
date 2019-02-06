@@ -1,16 +1,21 @@
-# raffle
+# Raffle app
 
-A new Flutter project.
+This is a simple demo app to showcase the utilities of Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Under `lib/constant` should be present a file called `Secrets.dart` that contain the link for the desired meetup and the authorization key. This file is on `.gitignore` for security reasons. 
 
-A few resources to get you started if this is your first Flutter project:
+The file should look like:
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+```dart
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+class Secrets {
+  static const String ApiKey = "2a171e7b6948521e142f60695a255522";
+
+  static const String MeetupURL =
+      "https://api.meetup.com/<meetup_name>/events/<event_id>/rsvps?photo-host=public&sig_id=195653046&sig=<secret_id>";
+}
+
+
+```

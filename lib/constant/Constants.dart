@@ -1,14 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:raffle/constant/Secrets.dart';
 import 'package:raffle/model/Contestant.dart';
 
 class Constants {
-  static const String MeetupURL =
-      "https://api.meetup.com/mobile-lx/events/257922272/rsvps?photo-host=public&sig_id=195653046&sig=0da6f66e4786b87073176d09ab973c43b151c012";
 
   static Future<http.Response> _fetchContestants() {
-    return http.get(MeetupURL);
+    return http.get(Secrets.MeetupURL);
   }
 
   static Future<List<Contestant>> fetchContestants() async {
