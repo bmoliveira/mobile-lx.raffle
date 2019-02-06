@@ -14,7 +14,7 @@ class Secrets {
   static const String ApiKey = "<api_key>";
 
   static const String MeetupURL =
-      "https://api.meetup.com/<meetup_name>/events/<event_id>/rsvps?photo-host=public&sig_id=195653046&sig=<secret_id>";
+      "https://api.meetup.com/<meetup_name>/events/<event_id>/rsvps?key=$ApiKey&sign=true";
 }
 
 
