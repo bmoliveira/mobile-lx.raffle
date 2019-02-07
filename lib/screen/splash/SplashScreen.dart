@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:raffle/ViewModelState.dart';
 import 'package:raffle/model/Contestant.dart';
-import 'package:raffle/screen/RaffleScreen.dart';
 import 'package:raffle/screen/Splash/SplashViewModel.dart';
+import 'package:raffle/screen/raffle_list/RaffleScreen.dart';
+import 'package:raffle/screen/raffle_list/RaffleScreenViewModel.dart';
 import 'package:raffle/view/TitleText.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -34,9 +35,10 @@ class SplashScreen extends StatelessWidget {
   }
 
   Widget _contestantList(List<Contestant> contestants) {
-    return ScopedModel<RaffleScreenViewModel>(
-      model: RaffleScreenViewModel(contestants: contestants),
-      child: RaffleScreen(),
+    RaffleScreenViewModel viewModel = RaffleScreenViewModel(contestants: contestants);
+    return ScopedModel<ViewModelState<RaffleScreenViewState>>(
+      model: viewModel.state,
+      child: RaffleScreen(viewModel),
     );
   }
 
@@ -58,7 +60,7 @@ class SplashScreen extends StatelessWidget {
           BoldTitleText("mobile.lx"),
           RegularTitleText("to"),
           BoldTitleText("NDC"),
-          BoldTitleText("{Porto}")
+          BoldTitleText("{ Porto }")
         ],
       ),
     );

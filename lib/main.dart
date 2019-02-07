@@ -16,7 +16,7 @@ class RaffleApp extends StatelessWidget {
         model: viewModel.state,
         child: MaterialApp(
             title: "Raffle",
-            theme: ThemeData(primarySwatch: Colors.deepOrange),
+            theme: ThemeData(primarySwatch: Colors.blue),
             home: SplashScreen(viewModel)));
   }
 }
