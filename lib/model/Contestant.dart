@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:raffle/constant/Constants.dart';
 
 class Contestant {
   int identifier;
@@ -20,6 +21,16 @@ class Contestant {
       this.hasConfirmed,
       this.isOrganizer})
       : assert(name != null);
+
+  factory Contestant.hardCoded(String name, String url) {
+    return Contestant(
+        identifier: 0,
+        name: name,
+        photoURL: url,
+        hasConfirmed: true,
+        isOrganizer: false
+    );
+  }
 
   factory Contestant.fromJson(Map<String, dynamic> json) {
     return Contestant(

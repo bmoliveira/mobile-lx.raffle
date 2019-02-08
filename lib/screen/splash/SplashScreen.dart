@@ -57,10 +57,10 @@ class SplashScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          BoldTitleText("mobile.lx"),
+          BoldTitleText("mobile.lx", Colors.white),
           RegularTitleText("to"),
-          BoldTitleText("NDC"),
-          BoldTitleText("{ Porto }")
+          BoldTitleText("NDC", Colors.white),
+          BoldTitleText("{ Porto }", Colors.white)
         ],
       ),
     );

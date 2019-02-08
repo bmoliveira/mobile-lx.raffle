@@ -1,30 +1,26 @@
 
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:raffle/ViewModelState.dart';
 import 'package:raffle/model/Contestant.dart';
 import 'package:raffle/screen/raffle_list/RaffleListItem.dart';
 
 class RaffleScreenViewModel {
-  List<Contestant> _contestants;
+  List<Contestant> contestants;
   ViewModelState<RaffleScreenViewState> state;
 
   RaffleScreenViewModel({Key key, contestants}) : assert(contestants != null) {
     contestants
         .retainWhere((contestant) { return contestant.hasConfirmed && !contestant.isOrganizer; });
 
-    _contestants = contestants;
+    this.contestants = contestants;
 
     state = ViewModelState(RaffleUserList(contestants));
   }
 
-  Contestant raffle(){
-    _contestants.shuffle();
-    // Twice to ensure randomness, lol, kidding :)
-    _contestants.shuffle();
-
-    final winner = _contestants.first;
-
-    return winner;
+  Future<int> raffle() async {
+    return Random().nextInt(contestants.length-1);
   }
 }
 

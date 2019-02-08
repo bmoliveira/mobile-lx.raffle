@@ -1,10 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:raffle/model/Contestant.dart';
+import 'package:raffle/view/TitleText.dart';
 
 class RaffleWinnerScreen extends StatelessWidget {
   final Contestant winner;
 
   RaffleWinnerScreen(this.winner);
+
+  Widget _photoContainer() {
+    return Container(
+      padding: EdgeInsets.only(bottom: 20),
+      child: Hero(
+        tag: winner.photoURL,
+        child: Container(
+            width: 250.0,
+            height: 250.0,
+            decoration: BoxDecoration(
+                boxShadow: [new BoxShadow(
+                    spreadRadius: 2,
+                    blurRadius: 2,
+                    color: Colors.black26
+                )],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                        winner.photoURL)
+                )
+            )),
+      ),
+    );
+  }
+
+  Widget _nameContainer() {
+    return BoldTitleText(winner.name, Colors.blue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,29 +46,8 @@ class RaffleWinnerScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(bottom: 20),
-              child: Hero(
-                tag: winner.photoURL,
-                child: Container(
-                    width: 160.0,
-                    height: 160.0,
-                    decoration: BoxDecoration(
-                        boxShadow: [new BoxShadow(
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          color: Colors.black26
-                        )],
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                winner.photoURL)
-                        )
-                    )),
-              ),
-            ),
-            Text(winner.name, style: TextStyle(fontSize: 20),)
+            _photoContainer(),
+            _nameContainer()
           ],
         ),
       ),

@@ -18,8 +18,9 @@ class RegularTitleText extends StatelessWidget {
 
 class BoldTitleText extends StatelessWidget {
   final String _text;
+  final Color _color;
 
-  BoldTitleText(this._text);
+  BoldTitleText(this._text, this._color);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class BoldTitleText extends StatelessWidget {
       child: RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              style: TextStyle(color: _color, fontSize: 40, fontWeight: FontWeight.bold),
               text: _text)),
     );
   }
